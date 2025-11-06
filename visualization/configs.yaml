@@ -1,0 +1,24 @@
+NAME: 'APTOS'
+DATASET: 'APTOSDataset'
+
+SEED: 34
+IMG_SIZE: 224
+PATCH_SIZE: 16
+BATCH_SIZE: 32
+TRAIN_RATIO: 0.75
+NUM_CLASSES: 2  
+IMG_DIR: "/data/fundus_dataset/APTOS/cropped_images/"
+CSV_DIR: "/data/fundus_dataset/APTOS/final_label.csv"
+DEVICE: 'cuda:0'
+
+# Fine-tuning
+MEAN: [0.48177003860473633, 0.2620476186275482, 0.0985482931137085]  
+STD: [0.23788580298423767, 0.13709917664527893, 0.05762823671102524]
+
+# FedAvg-LPE
+MODEL_PATH: '/workspace/fed-mdmae/results/fedavg_lpe/pretraining/global_model.pt'
+SCRATCH: False
+HYBRID: False
+FREEZE: True
+ADAPFT: False
+

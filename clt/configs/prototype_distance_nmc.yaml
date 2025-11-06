@@ -1,0 +1,36 @@
+# Prototype Distance-based Configuration for NMC Dataset
+
+# Dataset Configuration
+DATASET: 'NMCDataset'
+IMG_DIR: '/data/fundus_dataset/NMC/cropped_images/'
+CSV_DIR: '/data/fundus_dataset/NMC/final_label.csv'
+
+# Model Configuration
+NUM_CLASSES: 2
+IMG_SIZE: 224
+PATCH_SIZE: 16
+BATCH_SIZE: 32
+TRAIN_RATIO: 0.75
+
+# Normalization Parameters (Scalable)
+MEAN: [0.49139249324798584, 0.259649395942688, 0.10012753307819366]
+STD: [0.24435177445411682, 0.13781645894050598, 0.06025311350822449]
+
+# Model Paths (relative to project root)
+encoder_path: 'results/scalable/global_model.pt'
+global_protos: 'results/scalable/late-joining/federated_model/fedproto/0726_1359/global_protos_round250.npz'
+
+# Client Model Paths
+aptos_model: 'results/scalable/late-joining/federated_model/fedproto/0726_1359/client_APTOSDataset_model_250.pt'
+odir_model: 'results/scalable/late-joining/federated_model/fedproto/0726_1359/client_ODIRDataset_model_250.pt'
+idrid_model: 'results/scalable/late-joining/federated_model/fedproto/0726_1359/client_IDRiDDataset_model_250.pt'
+messidor_model: 'results/scalable/late-joining/federated_model/fedproto/0726_1359/client_MESSIDORDataset_model_250.pt'
+
+# Hyperparameters
+ZETA: 0           # Z-score threshold for filtering (0 = mean)
+KAPPA: 3          # Minimum number of clients for consensus (3 or 4)
+BETA: 82.5        # Percentile for Z-score margin filtering (0-100)
+
+# Scenario
+scenario: 'unlabeled'  # 'unlabeled' or 'late-joining'
+

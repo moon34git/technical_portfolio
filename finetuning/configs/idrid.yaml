@@ -1,0 +1,65 @@
+NAME: 'IDRiD'
+DATASET: 'IDRiDDataset'
+
+SEED: 34
+IMG_SIZE: 224
+PATCH_SIZE: 16
+EPOCHS: 100
+BATCH_SIZE: 16
+TRAIN_RATIO: 0.75
+ENCODER_LR: 1e-4
+CLASSIFIER_LR: 1e-4
+WEIGHT_DECAY: 1e-4 
+NUM_CLASSES: 2
+IMG_DIR: '/data/fundus_dataset/IDRiD/cropped_images/'
+CSV_DIR: '/data/fundus_dataset/IDRiD/final_label.csv'
+DEVICE: 'cuda:1'
+
+GOAL: 'qa_fedproto'
+
+# # Scratch
+# MEAN: [0.5446746349334717, 0.26358118653297424, 0.0842292457818985]
+# STD: [0.2289913296699524, 0.12395159155130386, 0.04519439861178398]
+# SAVE_PATH: '/workspace/fed-mdmae/results/scratch/'
+# SCRATCH: True
+# HYBRID: False
+# FREEZE: False
+# ADAPFT: False
+
+# Fine-tuning
+MEAN: [0.48177003860473633, 0.2620476186275482, 0.0985482931137085]  
+STD: [0.23788580298423767, 0.13709917664527893, 0.05762823671102524]
+
+# # Scalable
+# MEAN: [0.49139249324798584, 0.259649395942688, 0.10012753307819366]
+# STD: [0.24435177445411682, 0.13781645894050598, 0.06025311350822449]
+
+# FedAvg-LPE
+MODEL_PATH: '/workspace/fed-mdmae/results/partial/global_model.pt'
+BN_PATH: 
+SAVE_PATH: '/workspace/fed-mdmae/results/'
+SCRATCH: False
+HYBRID: False
+#
+FREEZE: True
+ADAPFT: True
+
+# # FedAvg-CPE
+# MODEL_PATH: '/workspace/fed-mdmae/results/fedavg_cpe/pretraining/global_model.pt'
+# BN_PATH: 
+# SAVE_PATH: '/workspace/fed-mdmae/results/fedavg_cpe/finetuning/'
+# SCRATCH: False
+# HYBRID: True
+# # #
+# FREEZE: True
+# ADAPFT: True
+
+# # FedBN-CPE
+# MODEL_PATH: '/workspace/fed-mdmae/results/fedbn_cpe/pretraining/global_model.pt'
+# BN_PATH: '/workspace/fed-mdmae/results/fedbn_cpe/pretraining/client_IDRiD_bn.pt'
+# SAVE_PATH: '/workspace/fed-mdmae/results/fedbn_cpe/finetuning/'
+# SCRATCH: False
+# HYBRID: True
+# #
+# FREEZE: True
+# ADAPFT: False
